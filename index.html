@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Página de prueba – Computación Gráfica</title>
+  <meta name="color-scheme" content="light dark">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #121a35;
+      --text: #e7ecfa;
+      --muted: #a4b0d3;
+      --accent: #f59e0b; /* naranja */
+      --ring: #7c3aed;
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg:#f7f8fd; --card:#ffffff; --text:#101427; --muted:#5b647c; --accent:#ff7a00; --ring:#5b6cff; }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1000px 600px at 10% 0%, rgba(255,255,255,.06), transparent 40%),
+                  radial-gradient(800px 500px at 90% 20%, rgba(245,158,11,.10), transparent 35%),
+                  var(--bg);
+      color:var(--text);
+      display:flex; align-items:center; justify-content:center; padding:24px;
+    }
+    .wrap{width:min(960px, 100%); display:grid; gap:20px}
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0)) border-box,
+                 radial-gradient(120% 120% at 0% 0%, rgba(124,58,237,.35), rgba(2,6,23,0)) border-box,
+                 var(--card) padding-box;
+      border:1px solid rgba(124,58,237,.35);
+      border-radius:20px; padding:24px; box-shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    .row{display:flex; flex-wrap:wrap; gap:12px; align-items:center}
+
+    h1{margin:0 0 8px 0; font-size:clamp(26px, 4vw, 40px); letter-spacing:.2px}
+    p{margin:0; color:var(--muted)}
+
+    .actions{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap}
+    button{
+      appearance:none; border:none; cursor:pointer; font-weight:600; letter-spacing:.2px;
+      padding:12px 16px; border-radius:14px; transition:transform .05s ease, box-shadow .2s ease, background .2s ease;
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0)) border-box,
+                 var(--accent) padding-box; color:#121212;
+      box-shadow:0 8px 18px rgba(245,158,11,.35);
+    }
+    button:hover{ transform: translateY(-1px) }
+    button:active{ transform: translateY(0) scale(.98) }
+
+    .ghost{
+      background:transparent; color:var(--text); border:1px solid rgba(124,58,237,.5);
+      box-shadow:0 8px 18px rgba(124,58,237,.25);
+    }
+
+    .grid{ display:grid; grid-template-columns: repeat( auto-fit, minmax(220px, 1fr) ); gap:14px }
+    .tile{
+      background:rgba(255,255,255,.04); border:1px dashed rgba(124,58,237,.35);
+      padding:16px; border-radius:16px;
+    }
+    .kpi{ font-size: clamp(22px, 3vw, 28px); font-weight:700 }
+    .tag{ display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(245,158,11,.15); color:var(--accent); font-weight:700; font-size:12px }
+
+    footer{ text-align:center; color:var(--muted); font-size:13px; margin-top:10px }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="row" style="justify-content:space-between">
+        <div>
+          <h1>¡Hola, GitHub! 🚀</h1>
+          <p>Página de prueba para tu repo <strong>ComputacionGraficaSCMJ</strong>. Incluye interacciones básicas en JavaScript.</p>
+        </div>
+        <span class="tag" id="modeTag">auto</span>
+      </div>
+      <div class="actions">
+        <button id="countBtn" aria-live="polite">Click: <span id="count">0</span></button>
+        <button class="ghost" id="toggleTheme">Alternar tema</button>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="tile">
+        <div class="kpi" id="now">--:--</div>
+        <p>Hora local del navegador</p>
+      </div>
+      <div class="tile">
+        <div class="kpi" id="random">—</div>
+        <p>Número aleatorio (0–100)</p>
+      </div>
+      <div class="tile">
+        <div class="kpi" id="status">Listo ✅</div>
+        <p>Estado</p>
+      </div>
+    </section>
+
+    <footer>Hecho con ♥ para pruebas rápidas — puedes editar este archivo libremente.</footer>
+  </main>
+
+  <script>
+    // Contador de clics
+    let clicks = 0;
+    const countBtn = document.getElementById('countBtn');
+    const countEl = document.getElementById('count');
+    countBtn.addEventListener('click', () => {
+      clicks++; countEl.textContent = clicks;
+    });
+
+    // Mostrar hora local y número aleatorio
+    const nowEl = document.getElementById('now');
+    const randEl = document.getElementById('random');
+    function refreshWidgets(){
+      const now = new Date();
+      nowEl.textContent = now.toLocaleTimeString();
+      randEl.textContent = Math.floor(Math.random()*101);
+    }
+    refreshWidgets();
+    setInterval(refreshWidgets, 1000);
+
+    // Alternar tema claro/oscuro agregando una clase en <html>
+    const toggle = document.getElementById('toggleTheme');
+    const modeTag = document.getElementById('modeTag');
+    toggle.addEventListener('click', () => {
+      const el = document.documentElement;
+      el.classList.toggle('force-light');
+      el.classList.toggle('force-dark');
+      const mode = el.classList.contains('force-dark') ? 'oscuro' : el.classList.contains('force-light') ? 'claro' : 'auto';
+      modeTag.textContent = mode;
+    });
+  </script>
+</body>
+</html>
