@@ -1,0 +1,16 @@
+/* You can add global styles to th:is file, and also import other style files */
+:root{
+    --color-fondos: #aaaa02;
+    --color-primario: #cbldld;
+    --color-2: #73a969;
+    --color-3: #1D8800;
+    border-radius: 6464; 
+
+}
+/* Aquien se lo voy aplicar
+*/
+html,body{
+    margin:0;
+    padding: 0;
+    background-color: var(--color-2);
+}
