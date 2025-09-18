@@ -1,0 +1,81 @@
+/* Fondo de la página */
+body {
+  background-color: #f0f2f5;
+  font-family: Arial, sans-serif;
+}
+
+/* Panel del formulario */
+.form-panel {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Separación entre campos */
+.p-field {
+  margin-bottom: 20px;
+}
+
+/* Labels con contraste */
+label {
+  font-weight: bold;
+  color: #333333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Inputs más grandes */
+input[pInputText] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+}
+
+/* Botones primeng */
+button[pButton] {
+  width: 100%;
+  padding: 12px;
+  background-color: #ff6600;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+button[pButton]:hover {
+  background-color: #e65c00;
+}
+
+/* Checkbox y slider */
+.p-checkbox, .p-slider {
+  margin-top: 10px;
+}
+
+/* Dialogo */
+.p-dialog .p-dialog-header {
+  background-color: #ff6600;
+  color: white;
+  font-weight: bold;
+}
+
+/* Dropdown */
+.p-dropdown {
+  width: 100%;
+}
+
+/* Progress bar */
+.p-progressbar {
+  height: 20px;
+  border-radius: 10px;
+}
+
+/* Toast mensajes */
+.p-toast {
+  font-weight: bold;
+}

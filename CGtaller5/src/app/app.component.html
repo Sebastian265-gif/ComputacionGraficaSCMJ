@@ -1,0 +1,56 @@
+<h1>{{title}}</h1>
+
+<div class="container">
+
+  <div class="card">
+    <p-button label="Mostrar Toast" (onClick)="showToast()"></p-button>
+    <p-toast></p-toast>
+  </div>
+
+  <p-card header="Ejemplo Card" subheader="Subtítulo">
+    <p>Contenido de la tarjeta con estilo PrimeNG.</p>
+  </p-card>
+
+  <div class="card">
+    <span class="p-float-label">
+      <input pInputText id="input" [(ngModel)]="inputValue" />
+      <label for="input">Escribe algo</label>
+    </span>
+    <p>Valor ingresado: {{inputValue}}</p>
+  </div>
+
+  <div class="card">
+    <p-slider [(ngModel)]="sliderValue" [min]="0" [max]="100" [step]="1"></p-slider>
+    <p>Valor del slider: {{sliderValue}}</p>
+  </div>
+
+  <div class="card">
+    <p-checkbox [(ngModel)]="checked" label="Aceptar" binary="true"></p-checkbox>
+    <p>Estado: {{checked}}</p>
+  </div>
+
+  <div class="card">
+    <p-button label="Mostrar Dialog" (onClick)="showDialog()"></p-button>
+    <p-dialog header="Diálogo PrimeNG" [(visible)]="displayDialog" modal="true" [closable]="true">
+      <p>Contenido del diálogo</p>
+    </p-dialog>
+  </div>
+
+  <div class="card">
+    <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Selecciona ciudad"></p-dropdown>
+    <p>Ciudad seleccionada: {{selectedCity?.name}}</p>
+  </div>
+
+  <div class="card">
+    <p-progressBar [value]="progress"></p-progressBar>
+    <p>Progreso: {{progress}}%</p>
+    <p-slider [(ngModel)]="progress" [min]="0" [max]="100" [step]="1"></p-slider>
+  </div>
+
+  <div class="card">
+    <p-button label="Otro botón" (onClick)="alertButton()"></p-button>
+  </div>
+
+</div>
+
+
